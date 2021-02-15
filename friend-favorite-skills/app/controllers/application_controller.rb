@@ -3,22 +3,20 @@ class ApplicationController < Sinatra::Base
   enable :sessions
   register Sinatra::ActiveRecordExtension
   register Sinatra::Flash
-    set :session_secret, "app_special_secret"
+    set :session_secret, "secret"
     set :public_folder, 'public'
     set :views, 'app/views'
-  
 
-  # get "/" do
-  #   # if is_logged_in?
-  #   #   redirect to '/favorites'
-  #   # end
-  #   erb :welcome
-  # end
+
   get '/' do
     if is_logged_in?
       redirect to '/experiences'
     end
     erb :welcome
+  end
+  get '/about' do
+    
+    erb :about
   end
 
   helpers do

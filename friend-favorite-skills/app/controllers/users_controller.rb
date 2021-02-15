@@ -1,41 +1,5 @@
 class UsersController < ApplicationController
 
-
-  # # GET: /users
-  # get "/users" do
-  #   erb :"/users/index.html"
-  # end
-
-  # # GET: /users/new
-  # get "/users/new" do
-  #   erb :"/users/new.html"
-  # end
-
-  # # POST: /users
-  # post "/users" do
-  #   redirect "/users"
-  # end
-
-  # # GET: /users/5
-  # get "/users/:id" do
-  #   erb :"/users/show.html"
-  # end
-
-  # # GET: /users/5/edit
-  # get "/users/:id/edit" do
-  #   erb :"/users/edit.html"
-  # end
-
-  # # PATCH: /users/5
-  # patch "/users/:id" do
-  #   redirect "/users/:id"
-  # end
-
-  # # DELETE: /users/5/delete
-  # delete "/users/:id/delete" do
-  #   redirect "/users"
-  # end
-
   get '/signup' do
     redirect to '/experiences' if is_logged_in?
 
@@ -57,11 +21,11 @@ class UsersController < ApplicationController
     new_user = User.create(user_info)
     session[:user_id] = new_user.id
 
-    redirect to '/experiences'
+    redirect to '/favorites'
   end
 
   get '/login' do
-    redirect to '/experiences' if is_logged_in?
+    redirect to '/favorites' if is_logged_in?
 
     erb :"users/login"
   end
@@ -78,7 +42,7 @@ class UsersController < ApplicationController
 
     if user && user.authenticate(user_info[:password])
       session[:user_id] = user.id
-      redirect to '/experiences'
+      redirect to '/favorites'
     else
       if user
         flash[:password] = "Your password is incorrect"
