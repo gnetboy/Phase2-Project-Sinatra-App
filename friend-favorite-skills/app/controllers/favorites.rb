@@ -1,4 +1,4 @@
-class FavoritesController < ApplicationController
+class Favorites < ApplicationController
 
   # GET: /favorites
   get "/favorites" do
