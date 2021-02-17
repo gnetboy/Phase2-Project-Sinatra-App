@@ -1,9 +1,9 @@
 <%# <h1>This is the Model's index page.</h1> %>
 
-<h1><%= @user.name %>My Favorite Activities</h1>
+<h1><%= @user.name %> Favorite Activities</h1>
 <br>
 <% if @user.favorites.empty? %>
-  <div class="text-center"><p>Your FavoritesList is empty!</p>
+  <div class="text-center"><p>Your Favorites List is empty!</p>
   <p><a class="btn btn-success" style="margin: 20px" href="/favorites/new" role="button">Add a New </a>
   or
   <a class="btn btn-warning" style="margin: 20px" href="/favorites/users" role="button">Explore Others Users Favs</a></p></div>

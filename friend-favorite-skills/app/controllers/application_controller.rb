@@ -1,23 +1,21 @@
+require './config/environment'
+require 'sinatra/flash'
+
 class ApplicationController < Sinatra::Base
 
+  configure do 
+  set :public_folder, 'public'
+  set :views, 'app/views'
   enable :sessions
-  register Sinatra::ActiveRecordExtension
+  set :session_secret, "Encrypt_session"
   register Sinatra::Flash
-    set :session_secret, "secret"
-    set :public_folder, 'public'
-    set :views, 'app/views'
-
+  end
 
   get '/' do
-    if is_logged_in?
-      redirect to '/favorites'
-    end
+  
     erb :welcome
   end
-  get '/about' do
-    
-    erb :about
-  end
+
 
   helpers do
     def is_logged_in?

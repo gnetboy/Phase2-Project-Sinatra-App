@@ -1,8 +1,9 @@
-class Favorites < ApplicationController
+class FavoritesController < ApplicationController
 
   # GET: /favorites
   get "/favorites" do
-    erb :"/favorites/index.html"
+    @user = current_user
+    erb :"/favorites/favorites"
   end
 
   # GET: /favorites/new

@@ -1,4 +1,4 @@
-class Categories < ApplicationController
+class CategoriesController < ApplicationController
   
   
   before '/categories/*' do

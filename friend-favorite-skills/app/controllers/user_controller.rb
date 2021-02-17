@@ -1,7 +1,7 @@
-class Users < ApplicationController
+class UserController < ApplicationController
 
   get '/signup' do
-    redirect to '/favorites' if is_logged_in?
+    # redirect to '/favorites' if is_logged_in?
 
     erb :"users/signup"
   end
@@ -25,9 +25,9 @@ class Users < ApplicationController
   end
 
   get '/login' do
-    redirect to '/favorites' if is_logged_in?
-
-    erb :"users/login"
+  #   if is_logged_in? redirect to '/favorites' 
+  #   end
+     erb :"users/login"
   end
 
   post '/login' do
