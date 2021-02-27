@@ -3,13 +3,13 @@ require 'sinatra/flash'
 
 class ApplicationController < Sinatra::Base
 
-  configure do 
-  set :public_folder, 'public'
-  set :views, 'app/views'
   enable :sessions
-  set :session_secret, "Encrypt_session"
+  register Sinatra::ActiveRecordExtension
   register Sinatra::Flash
-  end
+    set :session_secret, "Encrypt_session"
+    set :views, 'app/views'
+    set :public_folder, 'public'
+  
 
   get '/' do
   

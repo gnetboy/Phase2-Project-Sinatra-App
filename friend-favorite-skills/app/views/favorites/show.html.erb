@@ -1,1 +1,10 @@
-<h1>This is the show page for an individual instance of your model.</h1>
+<div class="jumbotron">
+  <h1 class="display-3"><%= @favorite.description %></h1>
+  <p class="lead"><strong>:</strong> <a href="//<%= @favorite.category.id %>"><%= @favorite.category.name %></a></p>
+  <% if @favorite.user_id == @user.id %>
+    <p>From Your List</p>
+    <a class="btn btn-info btn-sm" href="/favorites/<%= @favorite.id %>/edit" role="button">Edit Experience</a>
+  <% else %>
+    <p>From <%= @favorite.user.name %>'s  List</p>
+    <a class="btn btn-info btm-sm" href="/favorites/<%= @favorite.id %>/new_from_user" role="button">Add this to my List</a>
+  <% end %>

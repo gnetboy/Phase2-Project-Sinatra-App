@@ -29,11 +29,12 @@ GEM
     database_cleaner-active_record (2.0.0)
       activerecord (>= 5.a)
       database_cleaner-core (~> 2.0.0)
+    dotenv (2.7.6)
     eventmachine (1.2.7)
     i18n (1.8.9)
       concurrent-ruby (~> 1.0)
     method_source (1.0.0)
-    minitest (5.14.3)
+    minitest (5.14.4)
     mustermann (1.1.1)
       ruby2_keywords (~> 0.0.1)
     pry (0.14.0)
@@ -89,6 +90,7 @@ DEPENDENCIES
   activerecord (= 5.2)
   bcrypt
   database_cleaner!
+  dotenv
   pry
   rake
   require_all
