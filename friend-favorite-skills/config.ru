@@ -2,7 +2,7 @@ require './config/environment'
 
 
 use Rack::MethodOverride
-use CategoriesController
-use FavoritesController
-use UserController
 run ApplicationController
+use SessionsController
+use FavoritesController
+use UsersController

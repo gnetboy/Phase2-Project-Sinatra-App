@@ -10,30 +10,32 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_27_100300) do
-
-  create_table "categories", force: :cascade do |t|
-    t.string "name"
-  end
+ActiveRecord::Schema.define(version: 2021_03_01_031738) do
 
   create_table "comments", force: :cascade do |t|
-    t.string "content"
-    t.datetime "timestamp"
+    t.string "comment"
+    t.integer "favorite_id"
     t.integer "user_id"
-    t.integer "favorites_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["favorite_id"], name: "index_comments_on_favorite_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
   create_table "favorites", force: :cascade do |t|
-    t.string "description"
+    t.string "title"
+    t.string "content"
+    t.string "category"
     t.integer "user_id"
-    t.integer "category_id"
+    t.integer "comment_id"
   end
 
   create_table "users", force: :cascade do |t|
+    t.string "name"
     t.string "email"
     t.string "password_digest"
-    t.string "username"
-    t.datetime "timestamps"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end

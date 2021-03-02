@@ -1,27 +1,8 @@
-<%# <h1>This is the Model's index page.</h1> %>
-
-<h1><%= @user.name %> Favorite Activities</h1>
+<h1><%= @user.name%>'s Favs List</h1>
 <br>
 <% if @user.favorites.empty? %>
-  <div class="text-center"><p>Your Favorites List is empty!</p>
-  <p><a class="btn btn-success" style="margin: 20px" href="/favorites/new" role="button">Add a New </a>
+  <div class="text-center"><p>Nothing to show in your List!</p>
+  <p><a class="btn btn-success" style="margin: 20px" href="/favorites/new" role="button">Add a Favorite</a>
   or
-  <a class="btn btn-warning" style="margin: 20px" href="/favorites/users" role="button">Explore Others Users Favs</a></p></div>
-<% else %>
-<div class="row">
-  <a class="btn btn-success" style="margin: 20px" href="/favorites/new" role="button">+ Add New</a>
-  <a class="btn btn-warning" style="margin: 20px" href="/favorites/users" role="button">Get Inspiration</a>
-</div>
-  <% end %>
-
-<div class="row">
-  <% @user.favorites.each do |e| %>
-    <% category = Category.find(e.category_id) %>
-      <div class="card" style="width: 15rem; margin: 20px">
-        <div class="text-center">
-          <div class="card-header"><a href='/favorites/<%= e.id %>'><%= e.description %></a></div>
-          <div class="card-body" style="padding: 10px"><%= category.name %></div>
-        </div>
-      </div>
-    <% end %>
-</div>
+  <a class="btn btn-warning" style="margin: 20px" href="/favorites/users" role="button">Check Users Favs</a></p>
+  </div>

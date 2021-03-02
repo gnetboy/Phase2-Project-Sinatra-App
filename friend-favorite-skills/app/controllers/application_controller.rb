@@ -3,37 +3,50 @@ require 'sinatra/flash'
 
 class ApplicationController < Sinatra::Base
 
-  enable :sessions
-  register Sinatra::ActiveRecordExtension
-  register Sinatra::Flash
-    set :session_secret, "Encrypt_session"
-    set :views, 'app/views'
+  configure do 
     set :public_folder, 'public'
+    set :views, 'app/views'
+    enable :sessions
+    set :session_secret, ENV['SESSION_SECRET']
+    register Sinatra::Flash
+  end
   
 
   get '/' do
-  
     erb :welcome
   end
 
+  get ['/signin', '/access'] do
+    redirect '/login'
+  end
+
+  error Sinatra::NotFound do
+    erb :"error.html"
+  end
 
   helpers do
-    def is_logged_in?
-      !!session[:user_id]
-    end
-
     def current_user
-      User.find(session[:user_id])
+      @current_user ||= User.find(session[:user_id]) if session[:user_id]
     end
 
-    def is_empty?(user_hash, route)
-      user_hash.each do |att, val|
-        if val.empty?
-          flash[:empty] = "Please complete all fields."
-          redirect to "/#{route}"
-        end
+    def logged_in?
+      !!@current_user
+    end
+
+    def redirect_if_not_logged_in
+        redirect "/login" if !logged_in?
+    end
+
+    def not_the_owner?(obj)
+      if current_user != obj.user
+        flash[:error] = "You do not have permission for that page!"
+        redirect '/favorites' 
       end
     end
+
   end
+
+
+  
 
 end
