@@ -10,9 +10,10 @@ class SessionsController < ApplicationController
     post "/login" do
       current_user = User.find_by_email(params["user"]["email"])
       if current_user && current_user.authenticate(params["user"]["password"])
-        session["user_id"] = user.id
+        session["user_id"] = current_user.id
+
         flash[:success] = "Successfully logged in!"
-        redirect "/favorites/show"
+        redirect "users/show"
       else
         flash[:error] = "Invalid credentials"
         redirect "/login"

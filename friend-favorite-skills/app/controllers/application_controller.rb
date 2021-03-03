@@ -13,7 +13,7 @@ class ApplicationController < Sinatra::Base
   
 
   get '/' do
-    erb :welcome
+    erb :"welcome"
   end
 
   get ['/signin', '/access'] do

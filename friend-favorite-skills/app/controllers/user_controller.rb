@@ -39,8 +39,8 @@ end
 #     redirect to '/signup'
 #   end
 
-#   new_user = User.create(user_info)
+#   current_user = User.create(hash)
 #   session[:user_id] = new_user.id
 
-#   redirect to '/experiences'
+#   redirect to '/'
 # end

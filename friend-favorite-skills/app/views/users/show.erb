@@ -22,8 +22,8 @@
   <% current_user.favorites.each do |e| %>
       <div class="card" style="width: 15rem; margin: 20px">
         <div class="text-center">
-          <div class="card-header"><a href='/favorites/<%= e.id %>'><%= e.content %></a></div>
-          <div class="card-body" style="padding: 10px"><%= e.category %></div>
+          <div class="card-header"><%= e.title %></div>
+          <div class="card-body" style="padding: 10px"><br><%= e.content %><br><%= e.category %></div>
         </div>
       </div>
     <% end %>
