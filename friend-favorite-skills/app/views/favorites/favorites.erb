@@ -6,3 +6,14 @@
   or
   <a class="btn btn-warning" style="margin: 20px" href="/favorites/users" role="button">Check Users Favs</a></p>
   </div>
+  <div class="row">
+  <% @user.favorites.each do |e| %>
+    <% c = Favorite.find(e.favorite_id) %>
+      <div class="card" style="width: 15rem; margin: 20px">
+        <div class="text-center">
+          <div class="card-header"><a href='/favorites/<%= e.id %>'><%= e.description %></a></div>
+          <div class="card-body" style="padding: 10px"><%= category.name %></div>
+        </div>
+      </div>
+    <% end %>
+</div>

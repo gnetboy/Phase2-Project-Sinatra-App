@@ -1,0 +1,31 @@
+
+<% if flash[:error] %>
+    <div class="errors flash fatal">
+        <h4 class="error"><%= flash[:error] %></h4>
+    </div>
+<% end %>
+
+<h1><%= current_user.name%>'s  List</h1>
+<br>
+<% if current_user.favorites.empty? %>
+  <div class="text-center"><p>Nothing to show in your List!</p>
+  <p><a class="btn btn-success" style="margin: 20px" href="/favorites/new" role="button">Add a Favorite</a>
+  or
+  <a class="btn btn-warning" style="margin: 20px" href="/favorites/users" role="button">Check Users Favs</a></p></div>
+<% else %>
+<div class="row">
+  <a class="btn btn-success" style="margin: 20px" href="/favorites/new" role="button">+ Add New</a>
+  <a class="btn btn-warning" style="margin: 20px" href="/favorites/users" role="button">Get Inspiration</a>
+</div>
+
+    <div class="row">
+  <% current_user.favorites.each do |e| %>
+      <div class="card" style="width: 15rem; margin: 20px">
+        <div class="text-center">
+          <div class="card-header"><a href='/favorites/<%= e.id %>'><%= e.content %></a></div>
+          <div class="card-body" style="padding: 10px"><%= e.category %></div>
+        </div>
+      </div>
+    <% end %>
+</div>
+  <% end %>

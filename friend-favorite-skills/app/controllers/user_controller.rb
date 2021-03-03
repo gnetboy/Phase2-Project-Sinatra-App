@@ -4,6 +4,7 @@ class UsersController < ApplicationController
 
   # GET: /users/new
   get "/signup" do
+    redirect "/favorites" if logged_in?
     erb :"/users/signup"
   end
 
@@ -19,6 +20,9 @@ class UsersController < ApplicationController
       flash[:error] = user.errors.full_messages.first
       redirect '/signup'
     end
+  end
+  get "/users/:id" do
+    erb :"users/show"
   end
 
 end

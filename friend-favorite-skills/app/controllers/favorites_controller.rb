@@ -2,7 +2,6 @@ class FavoritesController < ApplicationController
 
   # GET: /favorites
   get "/favorites" do
-    @user = current_user
     erb :"/favorites/favorites"
   end
 
@@ -13,15 +12,22 @@ class FavoritesController < ApplicationController
 
   # POST: /favorites
   post "/favorites" do
-    fav = Favorite.create(params["favorite"])
-    redirect "/favorites/#{fav.id}"
-    binding.pry
+     favorite = Favorite.create(params["favorite"])
+     if favorite.valid?
+          favorite.user_id = session["user_id"]
+          favorite.save 
+           redirect "/favorites/#{favorite.id}"
+     else 
+      flash[:error]=favorite.errors.full_messages.to_sentence
+      redirect "/favorites/new"
+     end 
   end
 
   # GET: /favorites/5
   get "/favorites/:id" do
-    @user=current_user
+    @favorite=Favorite.find_by_id(params[:id])
     erb :"/favorites/show.html"
+
   end
 
   # GET: /favorites/5/edit
