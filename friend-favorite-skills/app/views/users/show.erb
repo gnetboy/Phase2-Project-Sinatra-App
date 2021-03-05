@@ -11,11 +11,11 @@
   <div class="text-center"><p>Nothing to show in your List!</p>
   <p><a class="btn btn-success" style="margin: 20px" href="/favorites/new" role="button">Add a Favorite</a>
   or
-  <a class="btn btn-warning" style="margin: 20px" href="/favorites/users" role="button">Check Users Favs</a></p></div>
+  <a class="btn btn-warning" style="margin: 20px" href="/all-favorites" role="button">Check Users Favs</a></p></div>
 <% else %>
 <div class="row">
   <a class="btn btn-success" style="margin: 20px" href="/favorites/new" role="button">+ Add New</a>
-  <a class="btn btn-warning" style="margin: 20px" href="/favorites/users" role="button">Get Inspiration</a>
+  <a class="btn btn-warning" style="margin: 20px" href="/all-favorites" role="button">Get Inspiration</a>
 </div>
 
     <div class="row">
@@ -23,7 +23,13 @@
       <div class="card" style="width: 15rem; margin: 20px">
         <div class="text-center">
           <div class="card-header"><%= e.title %></div>
-          <div class="card-body" style="padding: 10px"><br><%= e.content %><br><%= e.category %></div>
+          <div class="card-body" style="padding: 10px"><br><%= e.content %><br><%= e.category %>
+    </div>
+          <a class="btn btn-primary btn-sm" href="/favorites/<%=e.id%>/edit" >Edit</a>
+          <form  method="POST" action="/favorites/<%=e.id%>/delete" >
+          <input  id= "hidden" type="hidden" name="_method" value="delete">
+           <button class="btn btn-danger btn-sm" type="submit">Delete</button> 
+          </form>
         </div>
       </div>
     <% end %>

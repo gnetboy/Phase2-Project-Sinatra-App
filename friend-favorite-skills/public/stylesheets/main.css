@@ -81,6 +81,9 @@
     margin-top: 20px;
     padding-top: 20px;
   }
+  #delete-button {
+    display: inline-block;
+  }
 }
 
 @media screen and (max-width: 600px) {

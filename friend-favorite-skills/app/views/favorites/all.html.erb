@@ -1,0 +1,10 @@
+ <h3>View all users Favorite</h3>
+<div class="list-group">
+  <% @favorites.each do |c| %>
+        <div class="text-center">
+        <a href= "/favorites/<%=c.id%>" class="list-group-item list-group-item-action"><%= c.title %>
+      <span class="badge badge-primary badge-pill" style="margin: 5px"></span></a>
+    <% end %>
+  
+</div>
+<div class="text-left"><a class="btn btn-warning" style="margin: 20px"  href="/users/<%= current_user.id %>"role="button"> My Favs</a></div>

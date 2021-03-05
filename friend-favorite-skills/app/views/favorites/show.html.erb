@@ -5,6 +5,11 @@
     </div>
 <% end %>
 
-<h1><%=@favorite.title %></h1>
-<h4><%=@favorite.category %></h4>
-<h1><%=@favorite.content %></h1>
+    <div class="row">
+  
+      <div class="card" style="width: 15rem; margin: 20px">
+        <div class="text-center">
+          <div class="card-header"><%= @favorite.title %></div>
+          <div class="card-body" style="padding: 10px"><br><%=@favorite.content %><br><%= @favorite.category %>
+    </div>
+    <div class="text-left"><a class="btn btn-warning" style="margin: 20px"  href="/users/<%= current_user.id %>"role="button"> My Favs</a></div>

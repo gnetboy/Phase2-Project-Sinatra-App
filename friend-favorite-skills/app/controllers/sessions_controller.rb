@@ -2,7 +2,7 @@ class SessionsController < ApplicationController
 
     # GET: /sessions
     get "/login" do
-      redirect "/favorites" if logged_in?
+      redirect "/users/show" if logged_in?
       erb :"/sessions/login"
     end
   

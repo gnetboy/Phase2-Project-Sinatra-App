@@ -1,1 +1,22 @@
-<h1>Insert the form to edit an instance of your model here.</h1>
+<h1>edit <%=@favorite.title%></h1>
+<form method="post" action="/favorites/<%= @favorite.id %>">
+<input id="hidden" type="hidden" name="_method" value="patch">
+  <div class="form-group">
+    <label for="title">Title*</label>
+    <input type="text" name="favorite[title]" value="<%=@favorite.title%>" id="title" class="form-control" required>
+  </div>
+  
+  <div class="form-group">
+    <label for="content">Description *</label>
+    <input type="text" name="favorite[content]" value="<%=@favorite.content%>" id="content" class="form-control" required>
+  </div>
+ 
+ 
+  <div class="form-group">
+    <label for="category">Category:</label>
+    <input type="text" name="favorite[category]" value="<%=@favorite.category%>" id="category" class="form-control"required >
+  </div>
+ 
+  <br><br>
+  <button type="submit" class="btn btn-primary" style="margin-bottom: 20px">Save</button>
+</form>
