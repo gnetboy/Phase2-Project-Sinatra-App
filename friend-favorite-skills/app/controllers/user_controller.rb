@@ -11,7 +11,7 @@ class UsersController < ApplicationController
     user = User.create(params["user"])
     
     if user.valid?
-      flash[:success] = "Successfully created user!"
+      flash[:message] = "Successfully created user!"
       session["user_id"] = user.id
       redirect 'users/show'
     else
