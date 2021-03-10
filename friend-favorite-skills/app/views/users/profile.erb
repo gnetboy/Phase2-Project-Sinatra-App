@@ -1,0 +1,19 @@
+
+
+   <div class="row">
+  
+      <div class="card" style="width: 15rem; margin: 20px">
+        <div class="text-center">
+          <div class="card-header"><%= current_user.id %></div>
+          <div class="card-body" style="padding: 10px"><br><%= current_user.name %><br><%= current_user.email %>
+    </div>
+          <a class="btn btn-primary btn-sm" href="/users/<%=current_user.id%>/edit" >Edit</a>
+          <form  method="POST" action="/users/<%=current_user.id%>/delete" >
+          <input  id= "hidden" type="hidden" name="_method" value="delete">
+           <button class="btn btn-danger btn-sm" type="submit">Delete</button> 
+          </form>
+        </div>
+      </div>
+</div>
+
+<div class="text-left"><a class="btn btn-warning" style="margin: 20px"  href="/users/show"role="button"> My Favs</a></div>

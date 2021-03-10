@@ -23,10 +23,11 @@ end
      if favorite.valid?
           favorite.user_id = session["user_id"]
           favorite.save 
+          flash[:message] = "Success!"
            redirect "/favorites/#{favorite.id}"
           #redirect  "/users/#{current_user.id}"
      else 
-      flash[:error]=favorite.errors.full_messages.to_sentence
+      flash[:message]=favorite.errors.full_messages.to_sentence
       redirect "/favorites/new"
      end 
   end
@@ -50,7 +51,7 @@ end
       if @favorite.user == current_user
         if @favorite.update(params[:favorite])
           @favorite.save
-         flash[:update] = "Success" #success message
+         flash[:message] = "Success" #success message
          redirect "/users/show"#send to the /favorites/:id page
         else
           flash[:error] = "Unable to perform that action"#error message
@@ -67,7 +68,7 @@ end
         if @favorite.user == current_user
           if @favorite.destroy
           #success message
-          flash[:deleted] = "Succesfully deleted"
+          flash[:message] = "Succesfully deleted"
           redirect  "/users/#{current_user.id}"
         else
       #   error message

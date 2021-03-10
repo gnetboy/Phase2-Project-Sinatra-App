@@ -11,11 +11,11 @@ class UsersController < ApplicationController
     user = User.create(params["user"])
     
     if user.valid?
-      flash[:message] = "Successfully created user!"
       session["user_id"] = user.id
+      flash[:message] = "Successfully created user!"
       redirect 'users/show'
     else
-      flash[:error] = user.errors.full_messages.first
+      flash[:message] = user.errors.full_messages.first
       redirect '/signup'
     end
   end
@@ -27,5 +27,20 @@ class UsersController < ApplicationController
     else redirect to "/favorites"
   end
 end
+
+
+
+get "/users/:id/profile" do
+  user = User.find_by_id(params[:id])
+  if current_user == user
+  erb :"users/profile"
+  else 
+    flash[:message] ="You do not have access!"
+    redirect to "users/show"
+end
+end
+
+
+
 
 end
