@@ -8,10 +8,10 @@ class SessionsController < ApplicationController
   
     # POST: /sessions
     post "/login" do
-      current_user = User.find_by_email(params["user"]["email"])
-      if current_user && current_user.authenticate(params["user"]["password"])
-        session["user_id"] = current_user.id
-        flash[:message] = "Welcome, #{current_user.name}!"
+      user = User.find_by_email(params["user"]["email"])
+      if user && user.authenticate(params["user"]["password"])
+        session["user_id"] = user.id
+        flash[:message] = "Welcome, #{user.name}!"
         redirect "users/show"
       else
         flash[:message] = "Invalid credentials"

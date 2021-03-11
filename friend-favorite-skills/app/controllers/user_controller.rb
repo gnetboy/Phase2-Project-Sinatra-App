@@ -22,17 +22,18 @@ class UsersController < ApplicationController
   
   get "/users/:id" do
     user = User.find_by_id(params[:id])
-    if current_user == user
-    erb :"users/show"
-    else redirect to "/favorites"
+    if user == user
+      erb :"users/show"
+    else 
+      redirect to "/favorites"
+    end
   end
-end
 
 
 
 get "/users/:id/profile" do
   user = User.find_by_id(params[:id])
-  if current_user == user
+  if user == user
   erb :"users/profile"
   else 
     flash[:message] ="You do not have access!"

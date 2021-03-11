@@ -25,20 +25,22 @@ class ApplicationController < Sinatra::Base
   end
 
   helpers do
-    def current_user
-      @current_user ||= User.find(session[:user_id]) if session[:user_id]
+    def user
+      @user ||= User.find(session[:user_id]) if session[:user_id]
     end
 
     def logged_in?
-      !!@current_user
+      !!user
     end
 
     def redirect_if_not_logged_in
-        redirect "/login" if !logged_in?
+        if !logged_in?
+          redirect "/login" 
+        end
     end
 
     def not_the_owner?(obj)
-      if current_user != obj.user
+      if user != obj.user
         flash[:message] = "You do not have permission for that page!"
         redirect '/favorites' 
       end

@@ -8,7 +8,7 @@
           <div class="card-body" style="padding: 10px"><br><%= current_user.name %><br><%= current_user.email %>
     </div>
           <a class="btn btn-primary btn-sm" href="/users/<%=current_user.id%>/edit" >Edit</a>
-          <form  method="POST" action="/users/<%=current_user.id%>/delete" >
+          <form  class="user-delete" method="POST" action="/users/<%=current_user.id%>/delete" >
           <input  id= "hidden" type="hidden" name="_method" value="delete">
            <button class="btn btn-danger btn-sm" type="submit">Delete</button> 
           </form>

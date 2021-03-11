@@ -12,4 +12,4 @@
           <div class="card-header"><%= @favorite.title %></div>
           <div class="card-body" style="padding: 10px"><br><%=@favorite.content %><br><%= @favorite.category %>
     </div>
-    <div class="text-left"><a class="btn btn-warning" style="margin: 20px"  href="/users/<%= current_user.id %>"role="button"> My Favs</a></div>
+    <div class="text-left"><a class="btn btn-warning" style="margin: 20px"  href="/users/<%= user.id %>"role="button"> My Favs</a></div>

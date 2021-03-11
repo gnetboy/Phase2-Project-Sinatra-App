@@ -1,7 +1,7 @@
 
-<h1><%= current_user.name%>'s  List</h1>
+<h1><%= user.name%>'s  List</h1>
 <br>
-<% if current_user.favorites.empty? %>
+<% if user.favorites.empty? %>
   <div class="text-center"><p>Nothing to show in your List!</p>
   <p><a class="btn btn-success" style="margin: 20px" href="/favorites/new" role="button">Add a Favorite</a>
   or
@@ -13,7 +13,7 @@
 </div>
 
     <div class="row">
-  <% current_user.favorites.each do |e| %>
+  <%user.favorites.each do |e| %>
       <div class="card" style="width: 15rem; margin: 20px">
         <div class="text-center">
           <div class="card-header"><%= e.title %></div>
